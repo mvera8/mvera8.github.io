@@ -1,56 +1,37 @@
-const apiKey         = 'QQFEnlxp0Y5XyyqM1h1akHTk0RiuvJ2H';
-const randomPeticion = fetch( `https://api.giphy.com/v1/gifs/random?api_key=${ apiKey }` );
-let searchQuery      = document.getElementById( 'searchQuery' );
-const result = document.getElementById( 'searchResult' );
 
-console.log( 'small' );
+const apiKey      = 'QQFEnlxp0Y5XyyqM1h1akHTk0RiuvJ2H';
+const inputSearch = document.getElementById( 'inputSearch' );
+const btnSearch   = document.getElementById( 'btnSearch' );
+const divResult   = document.getElementById( 'divResult' );
 
-getSearchPeticion( 'hello', 'small' );
-
-/*
-randomPeticion
-  .then( resp => resp.json() )
-  .then( ({ data }) => {
-      const { url } = data.images.original;
-      const img = document.createElement( 'img' );
-      img.src  = url;
-      document.body.append( img );
-  })
-  .catch( console.warn );
-  */
-
-function clickSearch () {
-  let search = searchQuery.value;
-  if( !! search ) {
-    console.log( 'click' );
-    console.log( search );
-    getSearchPeticion( search );
+const getSearchPeticion = async ( search ) => {
+  try {
+    divResult.innerHTML = '';
+    const resp     = await fetch( `https://api.giphy.com/v1/gifs/search?api_key=${ apiKey }&q=${ search }&limit=18` );
+    const { data } = await resp.json();
+    data.forEach( element => {
+      console.log( element );
+      let imageUrl  = element.images.preview_gif.url;
+      let imageSize = element.images.original.size;
+      let col       = document.createElement( 'div' );
+      let img       = document.createElement( 'img' );
+      let p         = document.createElement( 'p' );
+      
+      img.src       = imageUrl;
+      img.className = 'img-fluid w-100';
+      p.className   = 'text-center small';
+      p.textContent += imageSize;
+      col.className = 'col-2';
+      col.append( img );
+      col.append( p )
+      divResult.append( col );
+    });
+  } catch ( error ) {
+    console.error( error );
   }
 }
 
-function getSearchPeticion ( search, type ) {
-  const searchPeticion = fetch( `https://api.giphy.com/v1/gifs/search?api_key=${ apiKey }&q=${ search }&limit=6` );
-    searchPeticion
-    .then( resp => resp.json() )
-    .then( ({ data }) => {
-        data.forEach( element => {
-          console.log( element );
-          let imageUrl;
-          if ( 'small' === type ) {
-            imageUrl = element.images.downsized.url;
-          } else {
-            imageUrl = element.images.original.url;
-          }
-          // console.log( imageUrl );
-          let col = document.createElement( 'div' );
-          col.className = 'col';
-          let img = document.createElement( 'img' );
-          img.src  = imageUrl;
-          img.className = 'img-fluid';
-          img.className = 'w-100';
-          col.append( img );
-          result.append( col );
-        });
-    })
-    .catch( console.warn );
-}
+btnSearch.addEventListener( 'click', event => {
+  let searchValue = inputSearch.value;
+  getSearchPeticion( searchValue );
+});
