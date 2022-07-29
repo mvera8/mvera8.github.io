@@ -4,6 +4,12 @@ const inputSearch = document.getElementById( 'inputSearch' );
 const btnSearch   = document.getElementById( 'btnSearch' );
 const divResult   = document.getElementById( 'divResult' );
 
+const changeBytes = ( bytes ) => {
+  // let k_bytes = parseInt( Math.floor( Math.log( bytes ) / Math.log( 1024 ) ) );
+  let k_bytes = parseInt( bytes / 1024 );
+  return k_bytes + ' kB';
+}
+
 const getSearchPeticion = async ( search ) => {
   try {
     divResult.innerHTML = '';
@@ -20,7 +26,7 @@ const getSearchPeticion = async ( search ) => {
       img.src       = imageUrl;
       img.className = 'img-fluid w-100';
       p.className   = 'text-center small';
-      p.textContent += imageSize;
+      p.textContent += changeBytes( imageSize );
       col.className = 'col-2';
       col.append( img );
       col.append( p )
