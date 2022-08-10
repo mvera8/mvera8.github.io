@@ -1,0 +1,62 @@
+$primary:   red;
+$secondary: blue;
+
+$theme-colors: (
+	'primary':   $primary,
+	'secondary': $secondary,
+);
+
+// Grid columns
+$grid-gutter-width: 3rem;
+
+// Options
+$enable-print-styles: false;
+
+$font-family-serif: "Roboto Slab",
+	"Lucida Bright",
+	Lucidabright,
+	"Lucida Serif", Lucida,
+	"Bitstream Vera Serif",
+	"Liberation Serif",
+	serif !default;
+
+$spacer: 1rem !default;
+$spacers: (
+	0: 0,
+	// 0
+	1: $spacer * .25,
+	// 4px
+	2: $spacer * .5,
+	// 8px
+	3: $spacer * .75,
+	// 12px
+	4: $spacer,
+	// 16px
+	5: $spacer * 1.25,
+	// 20px
+	6: $spacer * 1.5,
+	// 24px
+	7: $spacer * 2,
+	// 32px
+	8: $spacer * 2.5,
+	// 40px
+	) !default;
+
+$grid-gutter-width: 24px;
+$gutters: (
+	0: 0,
+	1: $spacer * .25,
+	2: $spacer * .5,
+	3: $spacer,
+	4: $spacer * 1.5,
+	5: $spacer * 3,
+);
+
+$h1-font-size: 40px !default;
+$h2-font-size: 32px !default;
+$h3-font-size: 24px !default;
+$h4-font-size: 20px !default;
+$h5-font-size: 16px !default;
+$h6-font-size: 12px !default;
+$small-font-size: 14px;
+$tiny-font-size: 12px;

@@ -1,3 +1,5 @@
+import "./styles.scss";
+
 const apiKey      = 'QQFEnlxp0Y5XyyqM1h1akHTk0RiuvJ2H';
 const inputSearch = document.getElementById( 'inputSearch' );
 const btnSearch   = document.getElementById( 'btnSearch' );
@@ -83,6 +85,7 @@ const getSearchPeticion = async ( search ) => {
     if( ! Object.keys( data ).length ) {
       h3Text( 'No GIFs found' );
     } else {
+      // search
       data.forEach( element => {
         // console.log( element );
         let imageUrlsM = element.images.preview_gif.url;
@@ -96,7 +99,7 @@ const getSearchPeticion = async ( search ) => {
         col.className = 'col-2';
         img.src       = imageUrlsM;
         img.className = 'img-fluid w-100';
-        p.className   = 'text-center small';
+        p.className   = 'small';
         p.textContent += changeBytes( imageSize );
         button.className   = 'p-0 border-0 w-100';
         button.value       = imageUrllG;
@@ -109,6 +112,13 @@ const getSearchPeticion = async ( search ) => {
         col.append( p );
         divResult.append( col );
       });
+
+      // place load more burtton
+      let btnMore = document.createElement( 'button' );
+      btnMore.className   = 'btn btn-secondary';
+      btnMore.textContent = 'Load More';
+      divResult.append( btnMore );
+
     }
   } catch ( error ) {
     console.error( error );
@@ -120,8 +130,9 @@ btnSearch.addEventListener( 'click', event => {
   const searchValue = inputSearch.value;
   if ( '' !== searchValue ) {
     getSearchPeticion( searchValue );
+  } else {
+    h3Text( 'Add something to search' );
   }
-  h3Text( 'Add something to search' );
 });
 
 // Action when click -> Enter.
