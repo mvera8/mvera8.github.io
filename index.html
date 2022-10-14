@@ -1,55 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <title>mvera8</title>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React</title>
   </head>
   <body>
-
-		<main>
-			<section class="container pt-3">
-				<h1>Search Gif</h1>
-
-				<div class="row">
-					<div class="col-9">
-						<div class="form-group">
-							<input type="email" class="form-control py-3 shadow-none" id="inputSearch" placeholder="Example: Hackerman">
-						</div>
-					</div>
-					<div class="col-3 d-grid">
-							<button type="button" class="btn btn-primary btn-lg shadow-none" id="btnSearch">Search</button>
-					</div>
-				</div>
-			</section>
-
-			<section class="container pt-3">
-				<div id="divTrending"></div>
-			</section>
-
-			<section class="container pt-3">			
-				<div id="divResult" class="row text-center pb-5"></div>
-			</section>
-		</main>
-
-		<footer class="footer mt-auto">
-			<div class="container">
-				
-			</div>
-		</footer>
-
-		<div id="divToast" class="toast position-absolute m-3 bottom-0 start-50 translate-middle-x text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
-			<div class="d-flex">
-				<div class="toast-body">
-					Copy to Clipboard.
-				</div>
-			</div>
-		</div>
-
-
-		<script type="text/javascript" src="dist/scripts.js"></script>
-
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
